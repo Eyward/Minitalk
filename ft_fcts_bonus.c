@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fcts.c                                          :+:      :+:    :+:   */
+/*   ft_fcts_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zzirh <zzirh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 21:42:14 by zzirh             #+#    #+#             */
-/*   Updated: 2022/04/05 16:20:13 by zzirh            ###   ########.fr       */
+/*   Created: 2022/04/01 11:22:12 by zzirh             #+#    #+#             */
+/*   Updated: 2022/04/04 20:57:18 by zzirh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minitalk.h"
+#include "ft_minitalk_bonus.h"
 
 int	ft_strlen(const char *str)
 {
@@ -31,9 +31,8 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	res = 0;
-	if (!str)
-		return (0);
-	while (str[i] == 32 || (str[i] >= '\t' && str[i] <= '\r'))
+	while (str[i] == '\f' || str[i] == '\v' || str[i] == '\t' || str[i] == '\r'
+		|| str[i] == '\n' || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{

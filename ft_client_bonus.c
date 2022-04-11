@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_client.c                                        :+:      :+:    :+:   */
+/*   ft_client_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zzirh <zzirh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 18:43:44 by zzirh             #+#    #+#             */
-/*   Updated: 2022/04/04 00:54:44 by zzirh            ###   ########.fr       */
+/*   Created: 2022/04/01 11:20:50 by zzirh             #+#    #+#             */
+/*   Updated: 2022/04/04 20:59:04 by zzirh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minitalk.h"
+#include "ft_minitalk_bonus.h"
 
 void	ft_send(int pid, char *s, int len)
 {
@@ -34,10 +34,20 @@ void	ft_send(int pid, char *s, int len)
 	}
 }
 
+void	handler(int sig)
+{
+	(void)sig;
+	ft_printf("message was successfully delivered\n");
+	exit(EXIT_SUCCESS);
+}
+
 int	main(int ac, char *av[])
 {
-	int	pid;
+	int					pid;
+	struct sigaction	sa;
 
+	sa.sa_handler = handler;
+	sigaction(SIGUSR2, &sa, NULL);
 	if (ac != 3)
 	{
 		ft_printf("client:invalid arguments\n");
@@ -47,5 +57,4 @@ int	main(int ac, char *av[])
 	if (pid < 1)
 		return (1);
 	ft_send(pid, av[2], ft_strlen(av[2]));
-	return (0);
 }

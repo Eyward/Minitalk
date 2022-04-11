@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minitalk.h                                      :+:      :+:    :+:   */
+/*   ft_minitalk_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zzirh <zzirh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 18:49:01 by zzirh             #+#    #+#             */
-/*   Updated: 2022/04/01 14:59:23 by zzirh            ###   ########.fr       */
+/*   Created: 2022/04/01 11:23:26 by zzirh             #+#    #+#             */
+/*   Updated: 2022/04/01 15:56:40 by zzirh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#ifndef FT_MINITALK_BONUS_H
+# define FT_MINITALK_BONUS_H
 
-# include <unistd.h>
 # include <signal.h>
 # include <sys/types.h>
+# include <stdlib.h>
 # include "f_Printf/ft_printf.h"
 
 typedef struct t_signal
@@ -27,8 +27,8 @@ typedef struct t_signal
 }	t_sig;
 
 void	ft_send(int pid, char *s, int len);
-void	handle_sigusr(int signum, siginfo_t *inf, void *a);
 int		ft_strlen(const char *str);
 int		ft_atoi(const char *str);
+void	handle_sigusr_bonus(int signum, siginfo_t *inf, void *a);
 
 #endif
